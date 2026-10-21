@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/*
+  Brand fonts, loaded from the fonts installed on this computer.
+  Reckless is a TRIAL licence: buy the web licence (and add the
+  .woff2 files here) before the site goes live.
+*/
+@font-face {
+  font-family: "Reckless";
+  src: local("Reckless Standard S-TRIAL Book"), local("RecklessStandardS-TRIAL-Book"), local("Reckless Standard S TRIAL Book");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Messina";
+  src: local("MessinaSans-Book"), local("Messina Sans Book"), local("Messina Sans");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Messina";
+  src: local("MessinaSans-Light"), local("Messina Sans Light");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@theme {
+  /* Brand palette (from the carousel + DeepJudge) */
+  --color-oat: #eee6dd;      /* main background */
+  --color-oat-2: #e4dacd;    /* slightly deeper oat for panels */
+  --color-ink: #221c1c;      /* warm charcoal */
+  --color-ink-2: #2d2626;
+  --color-lavender: #c5a8f9; /* the one accent */
+  --color-mist: #f4f2ef;     /* light text on charcoal */
+
+  /* Legacy names still used by the How it works section (to be rebuilt) */
+  --color-espresso: #221c1c;
+  --color-cocoa: #2d2626;
+  --color-bark: #2d2626;
+  --color-cream: #f4f2ef;
+  --color-paper: #eee6dd;
+  --color-taupe: #9a8f88;
+  --color-stone: #cbc4c0;
+  --color-teal: #c5a8f9;
+  --color-peach: #c5a8f9;
+
+  --font-serif: "Reckless", "Newsreader", Georgia, serif;
+  --font-sans: "Messina", "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-script: "Mrs Saint Delafield", cursive;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Base ---------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+html { background: var(--color-oat); overflow-x: clip; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-oat);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--color-lavender); color: var(--color-espresso); }
+
+.wrap {
+  width: 100%;
+  max-width: 86.815rem;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+@media (min-width: 768px) { .wrap { padding-inline: 24px; } }
+
+.serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.02em; }
+.h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(40px, 4.4vw, 62px); line-height: 0.98; letter-spacing: -0.022em; }
+.h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 3vw, 42px); line-height: 1.08; letter-spacing: -0.02em; }
+.h3 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(22px, 1.9vw, 27px); line-height: 1.15; letter-spacing: -0.015em; }
+.eyebrow { font-size: 13px; letter-spacing: 0.01em; color: var(--color-taupe); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 500; line-height: 1;
+  padding: 12px 16px; border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s var(--ease-out-soft);
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+.btn-cream { background: var(--color-cream); color: var(--color-espresso); }
+.btn-cream:hover { background: #fff; }
+.btn-glass { background: rgba(35, 18, 11, 0.35); color: var(--color-cream); border-color: rgba(252, 247, 244, 0.22); backdrop-filter: blur(8px); }
+.btn-glass:hover { border-color: rgba(252, 247, 244, 0.5); }
+.btn-dark { background: var(--color-cocoa); color: var(--color-cream); }
+.btn-dark:hover { background: #3a3131; }
+
+/* Brand buttons: small uppercase labels, like DeepJudge */
+.btn-ink, .btn-line, .btn-oat {
+  font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 14px 18px; border-radius: 6px;
+}
+.btn-ink { background: var(--color-ink); color: var(--color-oat); }
+.btn-ink:hover { background: #3a3131; }
+.btn-line { border-color: rgba(34, 28, 28, 0.35); color: var(--color-ink); }
+.btn-line:hover { border-color: var(--color-ink); background: rgba(34, 28, 28, 0.04); }
+.btn-oat { background: var(--color-oat); color: var(--color-ink); padding: 7px 10px; font-size: 11px; border-radius: 4px; }
+.btn-oat:hover { background: #fff; }
+
+/* Tiny uppercase meta labels (carousel corners, eyebrows) */
+.meta { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.35; }
+
+/* ---------- Photos ---------- */
+.warm-photo { filter: sepia(0.22) saturate(0.9) contrast(1.04) brightness(0.9); }
+
+/* Film grain overlay, used on photo panels */
+.grain::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .16; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.9'/></svg>");
+}
+
+/* ---------- Marquee ---------- */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-speed, 30s) linear infinite; }
+
+/* ---------- UI cards (demo surfaces) ---------- */
+.ui-dark {
+  background: linear-gradient(180deg, #2f2828, #282121);
+  border: 1px solid rgba(252, 247, 244, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+}
+.ui-light {
+  background: var(--color-cream);
+  color: var(--color-espresso);
+  border: 1px solid rgba(35, 18, 11, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.65);
+}
+.ui-row { border-top: 1px solid rgba(252, 247, 244, 0.08); }
+.ui-light .ui-row { border-top-color: rgba(35, 18, 11, 0.08); }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500; line-height: 1;
+  padding: 5px 8px; border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
