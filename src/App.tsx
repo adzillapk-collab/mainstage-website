@@ -3,13 +3,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { startSmoothScroll } from './lib/smoothScroll'
 import { Nav } from './sections/Nav'
 import { Hero } from './sections/Hero'
+import { AttentionScene } from './sections/attention/AttentionScene'
 import { Problem } from './sections/Problem'
+import { OurRule } from './sections/OurRule'
+import { Benefits } from './sections/Benefits'
 import { HowItWorks } from './sections/HowItWorks'
 import { Work } from './sections/Work'
+import { Audience } from './sections/Audience'
 import { Pricing } from './sections/Pricing'
 import { Team } from './sections/Team'
 import { Faq } from './sections/Faq'
 import { Closing } from './sections/Closing'
+import { LeadModal } from './components/LeadForm'
 
 export default function App() {
   useEffect(() => {
@@ -30,13 +35,18 @@ export default function App() {
       <main>
         <Hero />
         <Problem />
+        <AttentionScene />
+        <OurRule />
+        <Benefits />
         <HowItWorks />
         <Work />
+        <Audience />
         <Pricing />
-        <Team />
         <Faq />
+        <Team />
       </main>
       <Closing />
+      <LeadModal />
     </>
   )
 }

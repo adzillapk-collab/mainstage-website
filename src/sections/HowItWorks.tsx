@@ -3,13 +3,12 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { how } from '../content/copy'
 import { prefersReducedMotion } from '../lib/smoothScroll'
-import { FootageVisual, PlanVisual, PostVisual } from './how/StepVisuals'
-
-const VISUALS = [FootageVisual, PlanVisual, PostVisual]
+import { ChatVisual } from './how/ChatVisual'
 
 /**
  * DeepJudge-style numbered panel. On desktop the panel holds still and each
  * stretch of scrolling moves to the next step; phones get a simple stack.
+ * The visual tells the whole job as one short chat that grows with each step.
  */
 export function HowItWorks() {
   const root = useRef<HTMLElement>(null)
@@ -21,9 +20,21 @@ export function HowItWorks() {
         y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out',
         scrollTrigger: { trigger: '.how-panel', start: 'top 85%' },
       })
+      const mm = gsap.matchMedia()
+      // Phones don't pin, so the chat plays through by itself once it's in view
+      // (otherwise only the first message shows and the rest of the box sits empty)
+      mm.add('(max-width: 767px)', () => {
+        if (prefersReducedMotion()) {
+          setActive(how.steps.length - 1)
+          return
+        }
+        // starts as soon as the chat box peeks in, with quick beats between messages
+        // (your approval lands ~1.1s after our direction, just before the finished reel)
+        const tl = gsap.timeline({ scrollTrigger: { trigger: '.how-chat', start: 'top 90%' } })
+        for (let i = 1; i < how.steps.length; i++) tl.call(() => setActive(i), [], 0.2 + (i - 1) * 0.9)
+      })
       if (prefersReducedMotion()) return
 
-      const mm = gsap.matchMedia()
       mm.add('(min-width: 768px)', () => {
         gsap.timeline({
           scrollTrigger: {
@@ -48,8 +59,9 @@ export function HowItWorks() {
             {/* Left: headline + numbered steps */}
             <div className="flex flex-col md:col-span-5">
               <p className="meta mb-5 text-mist/55">{how.label}</p>
-              <h2 className="font-serif text-[clamp(36px,3.8vw,60px)] font-normal leading-[1] tracking-[-0.035em]">{how.title}</h2>
-              <p className="mt-4 max-w-[420px] text-[16px] leading-[1.5] text-mist/65 md:text-[17px]">{how.sub}</p>
+              <h2 className="font-serif text-[clamp(36px,3.8vw,60px)] font-normal leading-[1] tracking-[-0.035em] [text-wrap:balance]">
+                {how.title.split(/(?<=\.)\s+/).map((line) => <span key={line} className="block">{line}</span>)}
+              </h2>
 
               <ol className="mt-10 md:mt-auto">
                 {how.steps.map((s, i) => {
@@ -75,19 +87,12 @@ export function HowItWorks() {
                   )
                 })}
               </ol>
+              <p className="mt-6 text-[16px] leading-[1.5] text-mist/65 md:text-[17px]">{how.note}</p>
             </div>
 
-            {/* Right: the visual for the active step */}
-            <div className="relative min-h-[420px] overflow-hidden rounded-[10px] bg-ink-2 md:col-span-7 md:min-h-0">
-              {VISUALS.map((V, i) => (
-                <div
-                  key={i}
-                  className={`absolute inset-0 transition-opacity duration-500 ${active === i ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
-                  aria-hidden={active !== i}
-                >
-                  <V active={active === i} />
-                </div>
-              ))}
+            {/* Right: the chat, up to the active step */}
+            <div className="how-chat relative min-h-[540px] overflow-hidden rounded-[10px] bg-ink-2 md:col-span-7 md:min-h-0" aria-hidden>
+              <ChatVisual step={active} />
             </div>
           </div>
         </div>

@@ -20,12 +20,13 @@ export function Hero() {
   )
 
   return (
-    // Exactly one screen tall on laptops and desktops: copy on top, the visual fills the rest
+    // Exactly one screen tall on laptops and desktops: copy on top, the visual fills the rest.
+    // Phones just fit the content, so there's no empty band under the belts.
     <section
       ref={root}
       id="top"
       data-nav="light"
-      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-oat pt-[104px] md:h-[100svh] md:min-h-[640px] md:pt-[max(96px,13vh)]"
+      className="relative flex flex-col overflow-hidden bg-oat pt-[104px] md:h-[100svh] md:min-h-[640px] md:pt-[max(124px,17vh)]"
     >
       <div className="wrap relative flex min-h-0 flex-1 flex-col">
         {/* Copy, centred */}

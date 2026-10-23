@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { cta, footer } from '../content/copy'
+import { LeadButton } from '../components/LeadForm'
 import { Logo, LogoIcon } from '../components/ui/Logo'
 import { prefersReducedMotion } from '../lib/smoothScroll'
 
@@ -28,7 +29,7 @@ export function Closing() {
   return (
     <footer ref={root} id="book" data-nav="dark" className="relative overflow-hidden bg-ink text-mist">
       {/* ---------- CTA ---------- */}
-      <div className="wrap relative py-[clamp(110px,18vh,220px)]">
+      <div className="wrap relative py-[clamp(110px,18vh,220px)] max-md:py-20">
         {/* your icon, turning slowly and faintly in the background */}
         <LogoIcon className="cta-icon pointer-events-none absolute right-[-6%] top-1/2 w-[min(46vw,560px)] -translate-y-1/2 text-mist/[0.04] md:right-[2%]" />
 
@@ -36,8 +37,8 @@ export function Closing() {
           <h2 className="font-serif text-[clamp(48px,7vw,116px)] font-normal leading-[0.95] tracking-[-0.045em]">{cta.title}</h2>
           <p className="mt-7 max-w-[520px] text-[17px] leading-[1.5] text-mist/70 md:text-[19px]">{cta.sub}</p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href={cta.primary.href} className="btn btn-oat !px-5 !py-3.5 !text-[13px]">{cta.primary.label}</a>
-            <a href={cta.secondary.href} className="btn btn-line !border-mist/30 !text-mist hover:!border-mist hover:!bg-mist/5">{cta.secondary.label}</a>
+            <LeadButton source={`Closing · ${cta.primary.label}`} className="btn btn-oat !px-5 !py-3.5 !text-[13px]">{cta.primary.label}</LeadButton>
+            <LeadButton source={`Closing · ${cta.secondary.label}`} className="btn btn-line !border-mist/30 !text-mist hover:!border-mist hover:!bg-mist/5">{cta.secondary.label}</LeadButton>
           </div>
         </div>
       </div>
@@ -78,7 +79,14 @@ function FooterCol({ title, links, className = '' }: { title: string; links: { l
       <ul className="grid gap-3 text-[15px]">
         {links.map((l) => (
           <li key={l.label}>
-            <a href={l.href} className="text-mist/80 transition-colors hover:text-mist">{l.label}</a>
+            {/* outside links (Instagram, LinkedIn) open in a new tab so the site stays open */}
+            <a
+              href={l.href}
+              {...(/^https?:/.test(l.href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="text-mist/80 transition-colors hover:text-mist"
+            >
+              {l.label}
+            </a>
           </li>
         ))}
       </ul>

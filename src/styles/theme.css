@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 /*
-  Brand fonts, loaded from the fonts installed on this computer.
-  Reckless is a TRIAL licence: buy the web licence (and add the
-  .woff2 files here) before the site goes live.
+  Brand fonts, served with the site from public/fonts (Latin characters only,
+  to keep them small). FOR TESTING ONLY: Reckless is a TRIAL licence and
+  Messina needs a web licence. Replace these .woff2 files with the licensed
+  web fonts (same file names) before the public launch.
 */
 @font-face {
   font-family: "Reckless";
-  src: local("Reckless Standard S-TRIAL Book"), local("RecklessStandardS-TRIAL-Book"), local("Reckless Standard S TRIAL Book");
+  src: url("/fonts/reckless-book.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "Messina";
-  src: local("MessinaSans-Book"), local("Messina Sans Book"), local("Messina Sans");
+  src: url("/fonts/messina-book.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "Messina";
-  src: local("MessinaSans-Light"), local("Messina Sans Light");
+  src: url("/fonts/messina-light.woff2") format("woff2");
   font-weight: 300;
   font-display: swap;
 }
@@ -88,6 +89,7 @@ body {
   border: 1px solid transparent;
   transition: background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s var(--ease-out-soft);
   white-space: nowrap;
+  cursor: pointer;
 }
 .btn:active { transform: translateY(1px); }
 .btn-cream { background: var(--color-cream); color: var(--color-espresso); }
@@ -122,8 +124,6 @@ body {
 }
 
 /* ---------- Marquee ---------- */
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-speed, 30s) linear infinite; }
 
 /* ---------- UI cards (demo surfaces) ---------- */
 .ui-dark {
@@ -148,7 +148,9 @@ body {
   padding: 5px 8px; border-radius: 6px;
 }
 
+/* ---------- Our work: the playing reel's progress bar ---------- */
+@keyframes work-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
   * { scroll-behavior: auto !important; }
 }

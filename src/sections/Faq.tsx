@@ -24,7 +24,7 @@ export function Faq() {
   )
 
   return (
-    <section ref={root} id="faq" data-nav="light" className="bg-oat py-[clamp(96px,14vh,180px)] text-ink">
+    <section ref={root} id="faq" data-nav="light" className="bg-oat py-[clamp(96px,14vh,180px)] max-md:py-16 text-ink">
       <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
         {/* Headline stays in view while you read */}
         <div className="md:col-span-4">

@@ -9,6 +9,13 @@ export const prefersReducedMotion = () =>
 
 let lenis: Lenis | null = null
 
+/** Holds the page still (e.g. while a pop-up is open) and lets it go again. */
+export function setScrollLocked(locked: boolean) {
+  if (locked) lenis?.stop()
+  else lenis?.start()
+  document.documentElement.style.overflow = locked ? 'hidden' : ''
+}
+
 /** Lenis smooth scroll driven by GSAP's ticker so ScrollTrigger stays in sync. */
 export function startSmoothScroll() {
   if (lenis || prefersReducedMotion()) return () => {}

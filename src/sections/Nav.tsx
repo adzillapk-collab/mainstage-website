@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { nav } from '../content/copy'
 import { Logo } from '../components/ui/Logo'
+import { LeadButton, openLead } from '../components/LeadForm'
 
 /** Floating charcoal nav bar, like DeepJudge. Same look on every section. */
 export function Nav() {
@@ -23,7 +24,7 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href={nav.cta.href} className="btn btn-oat">{nav.cta.label}</a>
+            <LeadButton source={`Nav · ${nav.cta.label}`} className="btn btn-oat">{nav.cta.label}</LeadButton>
             <button
               className="grid h-9 w-9 place-items-center md:hidden"
               aria-label={open ? 'Close menu' : 'Open menu'}
@@ -41,11 +42,21 @@ export function Nav() {
         {/* Mobile menu */}
         <div className={`overflow-hidden transition-[max-height] duration-500 md:hidden ${open ? 'max-h-80' : 'max-h-0'}`}>
           <nav className="flex flex-col gap-1 px-4 pb-5 pt-1" aria-label="Mobile">
-            {[...nav.links, nav.secondary].map((l) => (
+            {nav.links.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2 font-serif text-2xl">
                 {l.label}
               </a>
             ))}
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false)
+                openLead(`Menu · ${nav.secondary.label}`)
+              }}
+              className="cursor-pointer py-2 text-left font-serif text-2xl"
+            >
+              {nav.secondary.label}
+            </button>
           </nav>
         </div>
       </div>

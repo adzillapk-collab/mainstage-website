@@ -1,4 +1,21 @@
+# Packages and build output (rebuilt with npm ci / npm run build)
 node_modules/
 dist/
+
+# Secrets: the lead form and media addresses live here, never in git
+.env.local
+.env.*.local
+
+# Mac and Windows clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and editor files
+*.log
+.vscode/
+.idea/
+
+# Local tools and side projects
 .claude/
 lai-turner-womens-funnel/

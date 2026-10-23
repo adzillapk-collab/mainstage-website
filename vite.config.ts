@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin } from 'vite'
+import { defineConfig, searchForWorkspaceRoot, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { readFile, writeFile } from 'node:fs/promises'
@@ -46,5 +46,22 @@ function copyEditor(): Plugin {
 export default defineConfig({
   plugins: [react(), tailwindcss(), copyEditor()],
   // Polling avoids the Windows "EBUSY" watcher errors that left stale modules in the browser
-  server: { port: 5173, watch: { usePolling: true, interval: 250 } },
+  // the site plus the three legal pages (copy.html stays dev-only)
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(process.cwd(), 'index.html'),
+        terms: resolve(process.cwd(), 'terms.html'),
+        privacy: resolve(process.cwd(), 'privacy.html'),
+        refunds: resolve(process.cwd(), 'refunds.html'),
+      },
+    },
+  },
+  server: {
+    port: 5173,
+    watch: { usePolling: true, interval: 250 },
+    // dev only: lets the local site play the compressed portfolio videos
+    // straight from their folder (see .env.development.local)
+    fs: { allow: [searchForWorkspaceRoot(process.cwd()), 'E:/Agency/Portfolio vids/web'] },
+  },
 })

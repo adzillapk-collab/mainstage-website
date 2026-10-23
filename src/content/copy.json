@@ -33,52 +33,110 @@
     "sub": "You talk to the camera. We turn it into a reel with a sharp hook, tight pacing and visuals that mean something."
   },
   "problem": {
-    "label": "The problem",
-    "titleA": "Most reels look busy.",
+    "titleA": "You sound like an expert.",
+    "titleB": "Does your reel look like one?"
+  },
+  "attention": {
+    "titleA": "Most reels look basic.",
     "titleB": "Very few hold attention.",
-    "body": "Holding attention comes down to small decisions: the opening line, the pauses to cut, the graphic that actually helps. Most editors skip these decisions.",
-    "chartLabel": "How many people keep watching",
-    "marker": "Most people scroll away",
-    "legendTypical": "Average reel",
-    "legendOurs": "Main Stage reel",
-    "points": [
+    "body": "Holding attention comes down to small decisions: the opening line, the pauses to cut, the graphic that actually helps. Most editors skip these decisions."
+  },
+  "rule": {
+    "label": "Our rule",
+    "titleA": "If it doesn’t help your message,",
+    "titleB": "it doesn’t go in.",
+    "body": "Every cut, every visual, every sound is there on purpose. We decide what each moment needs before we touch it. Then we leave the rest out.",
+    "keptLabel": "Goes in",
+    "cutLabel": "Left out",
+    "decisions": [
       {
-        "title": "The hook is buried",
-        "body": "The first seconds ramble, so people scroll before your point arrives."
+        "text": "A hook in the first line",
+        "keep": true
       },
       {
-        "title": "Busy, not clear",
-        "body": "Random zooms and emojis everywhere, but nothing on screen helps your point land."
+        "text": "A zoom on every sentence",
+        "keep": false
       },
       {
-        "title": "Round five of revisions",
-        "body": "Every change means redoing work, so one reel drags on for a week."
+        "text": "Cut the pauses",
+        "keep": true
+      },
+      {
+        "text": "Random emojis",
+        "keep": false
+      },
+      {
+        "text": "A graphic that explains the point",
+        "keep": true
+      },
+      {
+        "text": "Whoosh sound effects",
+        "keep": false
+      },
+      {
+        "text": "Captions you can read",
+        "keep": true
+      },
+      {
+        "text": "Flashy transitions",
+        "keep": false
+      }
+    ]
+  },
+  "benefits": {
+    "title": "What changes when your reels are done right",
+    "outcomes": [
+      {
+        "title": "People take you more seriously.",
+        "body": "A polished reel makes you look like the expert you are, before you’ve said a word."
+      },
+      {
+        "title": "Your brand becomes recognizable.",
+        "body": "Same look, same feel, every reel, so people know it’s you before they see your name."
+      },
+      {
+        "title": "You get your week back.",
+        "body": "No editing, no chasing editors, no endless notes. You record, we handle the rest."
+      },
+      {
+        "title": "You post with confidence.",
+        "body": "Every reel is one you’re proud to put your name on."
       }
     ]
   },
   "how": {
     "label": "How it works",
-    "title": "From raw footage to finished reel.",
-    "sub": "Three simple steps. No guesswork, no endless back-and-forth.",
+    "title": "Your part takes about 10 minutes. We handle the rest.",
     "steps": [
       {
-        "title": "Send your footage",
-        "body": "Upload your raw clips and a short brief: what it is about and who it is for. Any camera works, phone footage included."
+        "title": "Record and send",
+        "body": "Phone or camera, plus a few lines about the reel."
       },
       {
-        "title": "Approve the plan",
-        "body": "Before anything is animated, you see the plan on your own video. Approve it or leave a comment. No guessing, no surprises."
+        "title": "Approve the direction",
+        "body": "One quick check-in before we finish."
       },
       {
-        "title": "Post your reel",
-        "body": "Your finished reel lands fast, ready for Instagram, TikTok, YouTube Shorts and LinkedIn."
+        "title": "Post it",
+        "body": "Ready for every platform."
       }
-    ]
+    ],
+    "note": "No long briefs. No endless notes. No chasing."
   },
   "work": {
     "label": "Our work",
-    "title": "Hit play.",
-    "sub": "Some of our work, across founders, coaches, consultants and podcasts.",
+    "title": "See it for yourself.",
+    "sub": "Watch a few. Notice what’s there, and what isn’t.",
+    "cta": {
+      "label": "Get your first reel",
+      "href": "#trial"
+    },
+    "simple": {
+      "tag": "Standard"
+    },
+    "complex": {
+      "tag": "Premium"
+    },
     "reels": [
       {
         "who": "Founder",
@@ -126,116 +184,136 @@
           "well"
         ]
       }
+    ],
+    "fullLabel": "Watch full video",
+    "closeLabel": "Close video"
+  },
+  "audience": {
+    "label": "Who it’s for",
+    "title": "This is for you if you talk for a living.",
+    "yesIntro": "You’ll get the most out of Main Stage if:",
+    "yes": [
+      "You’re a founder, coach, consultant or expert who records yourself talking to camera, or runs a podcast",
+      "You post every week, or want to",
+      "You want reels that look premium, not flashy",
+      "You’d rather spend your time on ideas than on editing notes"
+    ],
+    "noIntro": "It’s not the right fit if:",
+    "no": [
+      "You need long YouTube videos, wedding films or big ad shoots",
+      "You’re looking for the cheapest edit you can find"
     ]
   },
   "pricing": {
     "label": "Pricing",
-    "title": "Pick a pack. Start posting.",
-    "sub": "One flat price per month. No contracts, so you can stop whenever you like.",
-    "plans": [
+    "title": "Pick how often you want to show up.",
+    "sub": "One monthly price. No contracts. Stop whenever you like.",
+    "perReel": "/ reel",
+    "perMonth": "/ month",
+    "total": "Total",
+    "reelsUnit": "reels",
+    "saveWith": "Save {amount} with {reels} reels",
+    "saving": "You save {amount}",
+    "packs": [
       {
-        "name": "Starter",
-        "price": 399,
         "reels": 4,
-        "perReel": 100,
-        "popular": false,
-        "features": [
-          "Up to 90 seconds each",
-          "Fast turnaround",
-          "Approve the plan first",
-          "2 rounds of final fixes"
-        ],
-        "cta": "Get started"
+        "simplePrice": 180,
+        "complexPrice": 300
       },
       {
-        "name": "Growth",
-        "price": 899,
-        "reels": 10,
-        "perReel": 90,
-        "popular": true,
-        "features": [
-          "Up to 90 seconds each",
-          "Priority turnaround",
-          "Approve the plan first",
-          "2 rounds of final fixes"
-        ],
-        "cta": "Get started"
+        "reels": 8,
+        "simplePrice": 320,
+        "complexPrice": 520
       },
       {
-        "name": "Scale",
-        "price": 1599,
-        "reels": 20,
-        "perReel": 80,
-        "popular": false,
-        "features": [
-          "Up to 90 seconds each",
-          "Priority turnaround",
-          "Approve the plan first",
-          "2 rounds of final fixes",
-          "Same editor on every reel"
-        ],
-        "cta": "Talk to us"
+        "reels": 12,
+        "simplePrice": 420,
+        "complexPrice": 720
       }
     ],
-    "more": "Posting more than 20 reels a month?",
-    "moreLink": {
-      "label": "Book a quick call",
-      "href": "#book"
-    }
-  },
-  "team": {
-    "label": "The team",
-    "title": "A small team that cares about every frame.",
-    "body": "Main Stage is run by three brothers who grew up editing. We keep the team small on purpose, so every reel passes through the hands of someone who actually cares how it turns out.",
-    "members": [
+    "plans": [
       {
-        "name": "[Name]",
-        "role": "[Role]",
-        "photo": ""
+        "key": "simple",
+        "name": "Standard edit",
+        "desc": "Clean cuts, clear captions and nothing extra.",
+        "features": [
+          "Reels up to 90 seconds",
+          "Styled to your brand",
+          "The same editor every time",
+          "Two rounds of small fixes on each reel"
+        ],
+        "cta": "Get started"
       },
       {
-        "name": "[Name]",
-        "role": "[Role]",
-        "photo": ""
-      },
-      {
-        "name": "[Name]",
-        "role": "[Role]",
-        "photo": ""
+        "key": "complex",
+        "name": "Premium edit",
+        "desc": "Graphics, cut-ins and motion, built around your point.",
+        "features": [
+          "Reels up to 90 seconds",
+          "Graphics, cut-ins and motion",
+          "Styled to your brand",
+          "The same editor every time",
+          "Two rounds of small fixes on each reel"
+        ],
+        "cta": "Get started"
       }
     ]
   },
+  "trial": {
+    "label": "Trial reel",
+    "title": "Not sure yet? Start with one reel.",
+    "body": "Send us one video. We’ll edit it exactly as we would for a monthly client.",
+    "body2": "If you love it, that amount comes off your first month. If you don’t, you’ve lost one video’s worth of risk, not a month.",
+    "cta": {
+      "label": "Get your first reel",
+      "href": "#book"
+    }
+  },
   "faq": {
     "label": "FAQ",
-    "title": "Questions? Answered.",
+    "title": "Quick answers before you start.",
     "items": [
       {
-        "q": "What kind of videos do you edit?",
-        "a": "Talking-head reels, meaning you speaking to the camera, up to 90 seconds. Podcast clips work too, as long as the focus is on the person speaking."
+        "q": "I only shoot on my phone. Is that OK?",
+        "a": "Yes. Phone footage works great."
       },
       {
-        "q": "Why do I approve a plan first?",
-        "a": "Because describing visuals in words rarely works. Seeing the plan on your own video makes it instantly clear, so the final reel matches what you had in mind."
+        "q": "Will it look like my brand?",
+        "a": "Yes. Send your colors, fonts and a few reels you like once, and every reel follows them."
       },
       {
-        "q": "What if I don't like the final reel?",
-        "a": "The final review is for small fixes, like timing, a word in a caption or a colour. The big decisions are made at the plan stage, so changes stay quick."
+        "q": "What if I want changes?",
+        "a": "Every reel includes two rounds of small fixes. Because we agree on the direction early, you rarely need them."
       },
       {
-        "q": "How do I send footage?",
-        "a": "Share your files through our upload form. Any camera works, phone footage included."
+        "q": "Am I locked in?",
+        "a": "No. Month to month, cancel anytime."
       },
       {
-        "q": "Can you match my brand?",
-        "a": "Yes. Send us your fonts, colours and a few reels you like. We'll keep every edit consistent."
+        "q": "Is my footage private?",
+        "a": "Yes. It’s only used for your reels and never shared."
+      }
+    ]
+  },
+  "team": {
+    "label": "The team",
+    "title": "The people behind every reel.",
+    "body": "Main Stage is run by three brothers who grew up editing. We keep the team small on purpose, so every reel goes through someone who cares how it turns out.",
+    "members": [
+      {
+        "name": "Samad",
+        "role": "",
+        "photo": "/team/left.webp"
       },
       {
-        "q": "Do I need to sign a long contract?",
-        "a": "No. Packs run month to month, and you can stop whenever you like."
+        "name": "Abdul Qadir",
+        "role": "",
+        "photo": "/team/middle.webp"
       },
       {
-        "q": "Is my footage safe?",
-        "a": "Your files stay private, are only used for your reels, and are never shared."
+        "name": "Abdullah",
+        "role": "",
+        "photo": "/team/right.webp"
       }
     ]
   },
@@ -273,36 +351,49 @@
     ],
     "contact": [
       {
-        "label": "[email]",
-        "href": "#"
+        "label": "getmainstage@gmail.com",
+        "href": "mailto:getmainstage@gmail.com"
       },
       {
         "label": "Instagram",
-        "href": "#"
-      },
-      {
-        "label": "TikTok",
-        "href": "#"
+        "href": "https://www.instagram.com/heyyqadir/"
       },
       {
         "label": "LinkedIn",
-        "href": "#"
+        "href": "https://www.linkedin.com/in/socialqadir"
       }
     ],
     "legal": [
       {
         "label": "Terms",
-        "href": "#"
+        "href": "/terms.html"
       },
       {
         "label": "Privacy",
-        "href": "#"
+        "href": "/privacy.html"
       },
       {
         "label": "Refunds",
-        "href": "#"
+        "href": "/refunds.html"
       }
     ],
     "copyright": "© 2026 Main Stage"
+  },
+  "lead": {
+    "title": "Let’s get you started",
+    "sub": "Leave your details and we’ll get back to you by email.",
+    "nameLabel": "Your name",
+    "emailLabel": "Email",
+    "linkedinLabel": "LinkedIn profile link",
+    "linkedinHint": "linkedin.com/in/yourname",
+    "submit": "Send",
+    "sending": "Sending…",
+    "doneTitle": "Thanks, we’ve got it.",
+    "doneBody": "We’ll be in touch by email soon.",
+    "close": "Close",
+    "errName": "Please add your name.",
+    "errEmail": "Please enter a valid email address.",
+    "errLinkedin": "Please paste your LinkedIn profile link (linkedin.com/in/…).",
+    "errSend": "Something went wrong. Please try again."
   }
 }
